@@ -20,7 +20,7 @@ jobs:
         run: npm install
 
       - name: Build Web App
-        run: npx vite build
+        run: npm run build
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -28,9 +28,9 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Sync Capacitor & Build Android APK
+      - name: Build Android APK
         run: |
-          npx @capacitor/cli sync android
+          npx cap sync android
           cd android
           chmod +x gradlew
           ./gradlew assembleDebug --no-daemon
